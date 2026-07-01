@@ -5,7 +5,7 @@ A production-grade, day-ahead electricity load forecasting system built for indi
 ---
 
 ## 🔗 Live Cloud Deployments
-* **Interactive UI Dashboard (Streamlit Cloud)**: [https://work-on-grid.streamlit.app](https://work-on-grid.streamlit.app)
+* **Interactive UI Dashboard (Streamlit Cloud)**: [https://workongrid-byaryankumarsaha.streamlit.app/](https://workongrid-byaryankumarsaha.streamlit.app/)
 * **ML Backend API (Render)**: [https://work-on-grid.onrender.com](https://work-on-grid.onrender.com)
 * **Interactive API Swagger Docs**: [https://work-on-grid.onrender.com/docs](https://work-on-grid.onrender.com/docs)
 
