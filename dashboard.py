@@ -30,7 +30,7 @@ st.set_page_config(
 )
 
 # Constants & Paths
-API_URL = "http://localhost:8000"
+API_URL = "https://work-on-grid.onrender.com"
 OUTPUT_DIR = "outputs"
 MODEL_PATH = os.path.join(OUTPUT_DIR, "models", "forecaster_lgb.pkl")
 METRICS_PATH = os.path.join(OUTPUT_DIR, "metrics.json")
