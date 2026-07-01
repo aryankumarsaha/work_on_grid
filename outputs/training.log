@@ -1,0 +1,63 @@
+2026-07-01 15:20:28,256 [INFO] Logging initialized. Log file: D:\projects\Work_on_grid\outputs\training.log
+2026-07-01 15:20:28,257 [INFO] Initializing day-ahead forecaster pipeline...
+2026-07-01 15:20:28,257 [INFO] Loading raw dataset from D:\projects\Work_on_grid\individual+household+electric+power+consumption\household_power_consumption.txt...
+2026-07-01 15:20:32,087 [INFO] Loaded 2,075,259 minute-level rows in 3.83s
+2026-07-01 15:20:32,090 [INFO] Parsing Date and Time columns...
+2026-07-01 15:20:44,806 [INFO] Imputing short gaps (<= 30 minutes) at minute-level...
+2026-07-01 15:20:51,618 [INFO] Resampling dataset to hourly resolution...
+2026-07-01 15:20:52,279 [INFO] Hourly col 'Global_reactive_power' had 421 NaNs (long gaps), seasonally imputed using training profile.
+2026-07-01 15:20:52,309 [INFO] Hourly col 'Voltage' had 421 NaNs (long gaps), seasonally imputed using training profile.
+2026-07-01 15:20:52,355 [INFO] Hourly col 'Global_intensity' had 421 NaNs (long gaps), seasonally imputed using training profile.
+2026-07-01 15:20:52,572 [INFO] Preprocessing completed. Hourly shape: (34589, 21)
+2026-07-01 15:20:52,743 [INFO] Constructing feature matrix...
+2026-07-01 15:20:52,783 [INFO] Applying outlier clipping for 'Global_active_power': [1st=9.214, 99th=244.084]
+2026-07-01 15:20:53,226 [INFO] Feature matrix X shape: (34396, 61), Target Y shape: (34396, 24)
+2026-07-01 15:20:53,246 [INFO] Training median load: 48.596 kW
+2026-07-01 15:20:53,248 [INFO] Fitting models...
+2026-07-01 15:20:53,677 [INFO] Starting hyperparameter optimization using Optuna + TimeSeriesSplit...
+2026-07-01 15:21:12,707 [INFO] Optuna Optimization complete. Best params: {'learning_rate': 0.07057883200987199, 'max_depth': 5, 'num_leaves': 17, 'colsample_bytree': 0.6445619608693305, 'subsample': 0.7845555442723372, 'random_state': 42, 'n_jobs': -1, 'verbosity': -1} (Best Score: 31.2246)
+2026-07-01 15:21:12,729 [INFO] Training point and interval forecast models for all 24 horizons...
+2026-07-01 15:21:16,203 [INFO] Trained Point & Quantile models for Horizon +1h (Best Point Iter: 267)
+2026-07-01 15:21:21,349 [INFO] Trained Point & Quantile models for Horizon +2h (Best Point Iter: 361)
+2026-07-01 15:21:25,255 [INFO] Trained Point & Quantile models for Horizon +3h (Best Point Iter: 240)
+2026-07-01 15:21:27,726 [INFO] Trained Point & Quantile models for Horizon +4h (Best Point Iter: 155)
+2026-07-01 15:21:29,583 [INFO] Trained Point & Quantile models for Horizon +5h (Best Point Iter: 169)
+2026-07-01 15:21:32,354 [INFO] Trained Point & Quantile models for Horizon +6h (Best Point Iter: 102)
+2026-07-01 15:21:34,688 [INFO] Trained Point & Quantile models for Horizon +7h (Best Point Iter: 101)
+2026-07-01 15:21:38,065 [INFO] Trained Point & Quantile models for Horizon +8h (Best Point Iter: 77)
+2026-07-01 15:21:42,408 [INFO] Trained Point & Quantile models for Horizon +9h (Best Point Iter: 83)
+2026-07-01 15:21:45,889 [INFO] Trained Point & Quantile models for Horizon +10h (Best Point Iter: 169)
+2026-07-01 15:21:47,837 [INFO] Trained Point & Quantile models for Horizon +11h (Best Point Iter: 165)
+2026-07-01 15:21:50,428 [INFO] Trained Point & Quantile models for Horizon +12h (Best Point Iter: 120)
+2026-07-01 15:21:54,051 [INFO] Trained Point & Quantile models for Horizon +13h (Best Point Iter: 152)
+2026-07-01 15:21:57,316 [INFO] Trained Point & Quantile models for Horizon +14h (Best Point Iter: 117)
+2026-07-01 15:21:59,770 [INFO] Trained Point & Quantile models for Horizon +15h (Best Point Iter: 81)
+2026-07-01 15:22:03,171 [INFO] Trained Point & Quantile models for Horizon +16h (Best Point Iter: 75)
+2026-07-01 15:22:06,002 [INFO] Trained Point & Quantile models for Horizon +17h (Best Point Iter: 65)
+2026-07-01 15:22:09,408 [INFO] Trained Point & Quantile models for Horizon +18h (Best Point Iter: 106)
+2026-07-01 15:22:12,163 [INFO] Trained Point & Quantile models for Horizon +19h (Best Point Iter: 103)
+2026-07-01 15:22:15,624 [INFO] Trained Point & Quantile models for Horizon +20h (Best Point Iter: 80)
+2026-07-01 15:22:18,311 [INFO] Trained Point & Quantile models for Horizon +21h (Best Point Iter: 77)
+2026-07-01 15:22:22,025 [INFO] Trained Point & Quantile models for Horizon +22h (Best Point Iter: 95)
+2026-07-01 15:22:25,126 [INFO] Trained Point & Quantile models for Horizon +23h (Best Point Iter: 144)
+2026-07-01 15:22:29,504 [INFO] Trained Point & Quantile models for Horizon +24h (Best Point Iter: 179)
+2026-07-01 15:22:29,506 [INFO] All models trained successfully in 76.78 seconds.
+2026-07-01 15:22:30,399 [INFO] Serialized model saved to D:\projects\Work_on_grid\outputs\models\forecaster_lgb.pkl
+2026-07-01 15:22:30,407 [INFO] Generating predictions on the test set...
+2026-07-01 15:22:33,971 [INFO] Computing baseline forecasts for test set...
+2026-07-01 15:22:36,769 [INFO] Performing model robustness checks (error analysis)...
+2026-07-01 15:22:40,121 [INFO] Robustness metrics saved to D:\projects\Work_on_grid\outputs\robustness_checks.json
+2026-07-01 15:22:40,328 [INFO] Generating comparison plot from 2010-01-08 00:00:00 to 2010-01-14 23:00:00...
+2026-07-01 15:22:42,242 [INFO] Forecast comparison plot saved to D:\projects\Work_on_grid\outputs\forecast_comparison_intervals.png
+2026-07-01 15:22:42,280 [INFO] Computing and plotting averaged feature importances...
+2026-07-01 15:22:42,709 [INFO] Feature importance plot saved to D:\projects\Work_on_grid\outputs\feature_importance.png
+2026-07-01 15:22:42,730 [INFO] Generating residuals plot from 2010-01-08 00:00:00 to 2010-01-14 23:00:00...
+2026-07-01 15:22:43,199 [INFO] Residuals plot saved to D:\projects\Work_on_grid\outputs\residuals_vs_time.png
+2026-07-01 15:22:43,230 [INFO] Generating prediction error distribution histogram...
+2026-07-01 15:22:43,671 [INFO] Error distribution plot saved to D:\projects\Work_on_grid\outputs\error_distribution.png
+2026-07-01 15:22:43,706 [INFO] Plotting robustness analysis charts...
+2026-07-01 15:22:44,469 [INFO] Robustness analysis plot saved to D:\projects\Work_on_grid\outputs\robustness_analysis.png
+2026-07-01 15:22:44,508 [INFO] Recording experiment configuration and results...
+2026-07-01 15:22:44,515 [INFO] Configuration details saved to D:\projects\Work_on_grid\outputs\config.json
+2026-07-01 15:22:44,519 [INFO] Evaluation metrics saved to D:\projects\Work_on_grid\outputs\metrics.json
+2026-07-01 15:22:44,525 [INFO] Historical run trace saved to D:\projects\Work_on_grid\outputs\experiments\run_20260701_152244.json

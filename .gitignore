@@ -1,0 +1,25 @@
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Python caching
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Raw dataset folder (large 133MB file)
+individual+household+electric+power+consumption/
+*.zip
+*.txt
+
+# IDE / System files
+.vscode/
+.idea/
+.DS_Store
+
+# Model checkpoints / Serialized large binaries (keep metrics & plots)
+outputs/models/*
+!outputs/models/forecaster_lgb.pkl
+

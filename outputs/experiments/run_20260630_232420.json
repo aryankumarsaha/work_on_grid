@@ -1,0 +1,39 @@
+{
+    "config": {
+        "timestamp": "2026-06-30T23:24:20.645369",
+        "hyperparameters": {
+            "learning_rate": 0.05,
+            "max_depth": 6,
+            "num_leaves": 31,
+            "colsample_bytree": 0.8,
+            "subsample": 0.8,
+            "random_state": 42,
+            "n_jobs": -1,
+            "verbosity": -1
+        },
+        "num_features": 61,
+        "training_time_seconds": 89.22768044471741
+    },
+    "metrics": {
+        "model_metrics": {
+            "MAE": 0.44034374228096856,
+            "RMSE": 0.5926630079146873,
+            "MAPE": 62.15622160176398
+        },
+        "daily_naive": {
+            "MAE": 0.548132514678147,
+            "RMSE": 0.8110920119440975,
+            "MAPE": 67.23432786982262
+        },
+        "weekly_naive": {
+            "MAE": 0.5713782557094181,
+            "RMSE": 0.8233172378069116,
+            "MAPE": 73.08206528804256
+        },
+        "quantiles": {
+            "pinball_0.05": 0.03772664218816808,
+            "pinball_0.95": 0.0730362863905006,
+            "coverage_rate_90pct": 89.39542690651128
+        }
+    }
+}
