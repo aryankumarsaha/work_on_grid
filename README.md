@@ -1,5 +1,13 @@
 # Day-Ahead Electricity Load Forecaster ⚡
-A production-grade, day-ahead electricity load forecasting system built for individual smart meters. It utilizes a **Direct Multi-Step LightGBM Regressor** optimized using **Optuna** and **TimeSeriesSplit**, compared against naive baselines and structured with a modular, containerized REST API.
+
+A production-grade, day-ahead electricity load forecasting system built for individual smart meters. It utilizes a **Direct Multi-Step LightGBM Regressor** optimized using **Optuna** and **TimeSeriesSplit**, compared against naive baselines and structured with a modular REST API and an interactive Streamlit UI dashboard.
+
+---
+
+## 🔗 Live Cloud Deployments
+* **Interactive UI Dashboard (Streamlit Cloud)**: [https://work-on-grid.streamlit.app](https://work-on-grid.streamlit.app)
+* **ML Backend API (Render)**: [https://work-on-grid.onrender.com](https://work-on-grid.onrender.com)
+* **Interactive API Swagger Docs**: [https://work-on-grid.onrender.com/docs](https://work-on-grid.onrender.com/docs)
 
 ---
 
@@ -39,25 +47,15 @@ Point & Quantile Model Fitting (Direct Forecasting: 72 total LightGBM Models)
        │
        ▼
 Serialization & Logging (Models pickled, experiments logged as JSON)
-       │
-       ▼
-FastAPI Server (Prediction endpoints & health diagnostic checks)
+       ├──────────────────────────────────────────┐
+       ▼                                          ▼
+FastAPI Server (api/app.py)                Streamlit UI Dashboard (dashboard.py)
+ (Prediction & Retraining endpoints)        (Interactive plots & Local Fallback Mode)
 ```
 
-### Future Production Scale MLOps Pipeline
-In a scaled utility grid environment, the system would transition to a real-time event streaming pipeline:
-```text
-Smart Meters ──> Apache Kafka ──> TimescaleDB (Time-series Storage) 
-                                      │
-                                      ▼
-             dbt / Feature Store <── Feature Engineering 
-                      │
-                      ▼
-            LightGBM Direct Forecaster (Batched Inference)
-                      │
-                      ▼
-            FastAPI Prediction Server ──> Monitoring Dashboard (Grafana)
-```
+### Hybrid Deployment Architecture
+* **FastAPI Server (ML Engine)**: Deployed on **Render** to expose standard REST API endpoints (`/predict`, `/train`, `/health`, `/metrics`).
+* **Streamlit Dashboard (Frontend)**: Deployed on **Streamlit Community Cloud**. It communicates with the live FastAPI backend over HTTP. If the API is offline, it automatically falls back to **Local Fallback Mode**, loading the pickled models and local feature engineering libraries to run predictions serverlessly.
 
 ---
 
@@ -139,7 +137,6 @@ Plots are saved in the `outputs/` folder:
 ---
 
 ## 9. FastAPI REST API 🚀
-
 A containerized FastAPI server exposes prediction and monitoring endpoints.
 
 ### API Endpoints
@@ -154,7 +151,7 @@ A containerized FastAPI server exposes prediction and monitoring endpoints.
 
 ## 10. How to Run 💻
 
-### Option A: Running Locally (Virtual Environment)
+### Running Locally (Virtual Environment)
 1. **Initialize and Activate Virtual Environment:**
    ```bash
    python -m venv venv
@@ -168,23 +165,17 @@ A containerized FastAPI server exposes prediction and monitoring endpoints.
    ```bash
    python main.py
    ```
-4. **Launch FastAPI Server:**
+4. **Launch FastAPI Server (Backend):**
    ```bash
    uvicorn api.app:app --host 0.0.0.0 --port 8000
    ```
-5. **Run Tests:**
+5. **Launch Streamlit Dashboard (Frontend):**
+   ```bash
+   streamlit run dashboard.py
+   ```
+6. **Run Tests:**
    ```bash
    pytest tests/
-   ```
-
-### Option B: Running via Docker (Containerized API)
-1. **Build Docker Image:**
-   ```bash
-   docker build -t load-forecaster .
-   ```
-2. **Run Container:**
-   ```bash
-   docker run -p 8000:8000 load-forecaster
    ```
 
 ---
