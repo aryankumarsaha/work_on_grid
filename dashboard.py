@@ -56,24 +56,11 @@ st.markdown("""
     div[data-testid="stMetricValue"] {
         font-size: 32px;
         font-weight: 700;
-        color: #ff7f0e;
+        color: #ff7f0e !important;
     }
     div[data-testid="stMetricLabel"] {
         font-size: 14px;
         font-weight: 600;
-        color: #555;
-    }
-    /* Main Background adjustments */
-    .stApp {
-        background-color: #fafbfc;
-    }
-    /* Sidebar adjustments */
-    section[data-testid="stSidebar"] {
-        background-color: #1a1c23;
-        color: #ffffff;
-    }
-    section[data-testid="stSidebar"] hr {
-        border-top: 1px solid #2d3139;
     }
     .sidebar-title {
         color: #ff7f0e;
