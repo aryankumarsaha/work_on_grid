@@ -1,3 +1,11 @@
+# python main.py
+# uvicorn api.app:app --host 0.0.0.0 --port 8000
+
+# streamlit run dashboard.py
+# pytest tests/
+
+
+
 """
 Day-Ahead Electricity Load Forecaster
 
