@@ -1,15 +1,15 @@
 {
-    "timestamp": "2026-07-01T15:44:48.922687",
+    "timestamp": "2026-07-02T20:09:35.675671",
     "hyperparameters": {
-        "learning_rate": 0.07169777704288847,
-        "max_depth": 8,
+        "learning_rate": 0.08664345703733378,
+        "max_depth": 5,
         "num_leaves": 26,
-        "colsample_bytree": 0.6547438433842053,
-        "subsample": 0.7331842447321769,
+        "colsample_bytree": 0.6957751866315071,
+        "subsample": 0.6636976427146093,
         "random_state": 42,
         "n_jobs": -1,
         "verbosity": -1
     },
     "num_features": 61,
-    "training_time_seconds": 76.62024569511414
+    "training_time_seconds": 119.79188203811646
 }
